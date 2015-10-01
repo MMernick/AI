@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <!-- META SECTION -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>IA</title>
+
+        <!-- CSS INCLUDE -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/estilo.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <h2>Inteligencia Artificial<small> ATPS (Etapa I)</small></h2>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Busca</h3>
+                        </div>
+                        <div class="panel-body"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Cadastro de Cidades</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <input type="text" id="nome_cidade" style="width: 200px" placeholder="Cidade">
+                                </div>
+                                <button type="button" class="btn btn-primary pull-right" onclick="cadastra_cidades()">Cadastrar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Vincular Distâncias</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <select id="cidade_atual" class="form-control" style="width: 200px;">
+                                        <option value="Adamantina">Adamantina</option>
+                                        <option value="Lucélia">Lucélia</option>
+                                    </select>
+                                    &nbsp;
+                                    <span class="glyphicon glyphicon-arrow-right" style="font-size: 20px;"></span>
+                                    &nbsp;
+                                    <input type="text" id="cidade_km" style="width: 50px" placeholder="KM">
+                                    &nbsp;
+                                    <span class="glyphicon glyphicon-arrow-right" style="font-size: 20px;"></span>
+                                    &nbsp;
+                                    <select id="cidade_destino" class="form-control" style="width: 200px;">
+                                        <option value="Adamantina">Adamantina</option>
+                                        <option value="Oswaldo Cruz">Oswaldo Cruz</option>
+                                    </select>
+                                </div>
+                                <button type="button" class="btn btn-primary pull-right" onclick="vincular_cidades()">Vincular</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Cidades Cadastradas</h3>
+                        </div>
+                        <div class="panel-body" id="lista_cidades"></div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Distância Entre Cidades</h3>
+                        </div>
+                        <div class="panel-body" id="cidades_vinculadas"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- PLUGINS -->
+        <script src="ajax/core.js"></script>
+        <script src="js/core.js"></script>
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/bootstrap.min.js" ></script>
+        <script src="js.js"></script>
+    </body>
+</html>
