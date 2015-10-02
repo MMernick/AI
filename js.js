@@ -9,8 +9,6 @@ function carrega_cidades(){
 //------------------------------------------------------------------------------
 function carrega_cmb_cidades(){
     function retorno(ret){
-        id('cidade_atual_param').innerHTML      = ret;
-        id('cidade_destino_param').innerHTML    = ret;
         id('cidade_atual').innerHTML            = ret;
         id('cidade_destino').innerHTML          = ret;
     };
