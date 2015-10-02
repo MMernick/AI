@@ -18,7 +18,25 @@
                 <h2>Inteligencia Artificial<small> ATPS (Etapa I)</small></h2>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Parametros</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <select id="cidade_atual_param" class="form-control" style="width: 200px;"></select>
+                                    <br>
+                                    <br>
+                                    <select id="cidade_destino_param" class="form-control" style="width: 200px;"></select>
+                                </div>
+                                <button type="button" class="btn btn-primary pull-right">Calcular</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">Busca</h3>
@@ -51,10 +69,7 @@
                         <div class="panel-body">
                             <form class="form-inline">
                                 <div class="form-group">
-                                    <select id="cidade_atual" class="form-control" style="width: 200px;">
-                                        <option value="Adamantina">Adamantina</option>
-                                        <option value="Lucélia">Lucélia</option>
-                                    </select>
+                                    <select id="cidade_atual" class="form-control" style="width: 200px;"></select>
                                     &nbsp;
                                     <span class="glyphicon glyphicon-arrow-right" style="font-size: 20px;"></span>
                                     &nbsp;
@@ -62,12 +77,9 @@
                                     &nbsp;
                                     <span class="glyphicon glyphicon-arrow-right" style="font-size: 20px;"></span>
                                     &nbsp;
-                                    <select id="cidade_destino" class="form-control" style="width: 200px;">
-                                        <option value="Adamantina">Adamantina</option>
-                                        <option value="Oswaldo Cruz">Oswaldo Cruz</option>
-                                    </select>
+                                    <select id="cidade_destino" class="form-control" style="width: 200px;"></select>
                                 </div>
-                                <button type="button" class="btn btn-primary pull-right" onclick="vincular_cidades()">Vincular</button>
+                                <button type="button" class="btn btn-primary pull-right" onclick="vincular_cidades()">Vincular / Editar</button>
                             </form>
                         </div>
                     </div>

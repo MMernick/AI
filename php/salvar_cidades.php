@@ -9,13 +9,13 @@ $arquivo = file_get_contents($path);
 $dados = json_decode($arquivo, true);
 
 for($i = 0; $i < count($dados); $i++){
-    if($dados[$i]['CIDADES'] == $nome_cidade){
+    if($dados[$i] == $nome_cidade){
         $existe = TRUE;
     }
 }
 
 if($existe == FALSE){
-    $dados[] = ARRAY('CIDADES'=> $nome_cidade);
+    $dados[] = $nome_cidade;
 
     $grava = file_put_contents($path,json_encode($dados));
 

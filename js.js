@@ -7,11 +7,20 @@ function carrega_cidades(){
 };
 
 //------------------------------------------------------------------------------
+function carrega_cmb_cidades(){
+    function retorno(ret){
+        id('cidade_atual_param').innerHTML      = ret;
+        id('cidade_destino_param').innerHTML    = ret;
+        id('cidade_atual').innerHTML            = ret;
+        id('cidade_destino').innerHTML          = ret;
+    };
+    ajax('php/carregar_cmb_cidades.php', null, retorno);
+};
+
+//------------------------------------------------------------------------------
 function carrega_cidades_vinculadas(){
     function retorno(ret){
-        ret = JSON.parse(ret);
-        //id('cidades_vinculadas').innerHTML = ret;
-        console.log(ret);
+        id('cidades_vinculadas').innerHTML = ret;
     };
     ajax('php/carregar_cidades_vinculadas.php', null, retorno);
 };
@@ -42,13 +51,11 @@ function cadastra_cidades(){
 //------------------------------------------------------------------------------
 function vincular_cidades(){
     function retorno(ret){
-        ret = JSON.parse(ret);
-        if(ret.ERRO == '0'){
-            alert('Cidades Vinculadas com Sucesso!');
-        }
-        if(ret.ERRO == '1'){
-            alert('Erro ao Tentar Vincular as Cidades!');
-        }
+        carrega_cidades_vinculadas();
+        
+        id('cidade_atual').value    = '';
+        id('cidade_destino').value  = '';
+        id('cidade_km').value       = '';
     };
     
     if(!id('cidade_atual').value){
@@ -68,24 +75,6 @@ function vincular_cidades(){
     ajax('php/vincular_cidades.php', strpar, retorno);
 };
 
-/*
-//------------------------------------------------------------------------------
-function deleta_cidades(nome){
-    function retorno(ret){
-        ret = JSON.parse(ret);
-        if(ret.ERRO == '0'){
-            alert('Cidades Excluida com Sucesso!');
-        }
-        if(ret.ERRO == '1'){
-            alert('Erro ao Tentar Excluir Cidade!');
-        }
-        if(ret.ERRO == '2'){
-            alert('Cidade Já Existente!');
-        }
-    };
-    var strpar = array_args('nome_cidade', nome);
-    ajax('php/deletar_cidades.php', strpar, retorno);
-};
-*/
 carrega_cidades();
+carrega_cmb_cidades();
 carrega_cidades_vinculadas();

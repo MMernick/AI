@@ -5,30 +5,27 @@ $cidade_atual    = $_GET['cidade_atual'];
 $cidade_destino  = $_GET['cidade_destino'];
 $cidade_km       = $_GET['cidade_km'];
 
-//$existe         = FALSE;
+$existe         = FALSE;
 $path           = $GLOBALS['PATH'].'/registros/vincular_cidades.json';
 
 $arquivo = file_get_contents($path);
 $dados = json_decode($arquivo, true);
 
-/*for($i = 0; $i < count($dados); $i++){
-    if($dados[$i]['CIDADES'] == $nome_cidade){
-        $existe = TRUE;
+if(!empty($dados[$cidade_atual])){
+    for($i = 0; $i < count($dados[$cidade_atual]); $i++){
+        if($dados[$cidade_atual][$i]['DESTINO'] == $cidade_destino){
+            $dados[$cidade_atual][$i]['KM'] = $cidade_km;
+        }else{
+            $dados[$cidade_atual][] = ['CIDADE' => $cidade_atual, 'DESTINO' => $cidade_destino, 'KM' => $cidade_km];
+        }
     }
+}else{
+    $dados[$cidade_atual][] = ['CIDADE' => $cidade_atual, 'DESTINO' => $cidade_destino, 'KM' => $cidade_km];
 }
 
-if($existe == FALSE){*/
-    $dados[] = ARRAY('CIDADE' => $cidade_atual, 'DESTINO' => $cidade_destino, 'KM' => $cidade_km);
-    
-    $grava = file_put_contents($path,json_encode($dados));
-
-    if($grava == TRUE){
-        $mensagem = ['ERRO' => '0'];
-    }else{
-        $mensagem = ['ERRO' => '1'];
-    }
-    unset($dados);
-/*}else{
-    $mensagem = ['ERRO' => '2'];
-}*/
-echo json_encode($mensagem);
+if(file_put_contents($path,json_encode($dados))){
+    $mensagem = 'Cidades Vinculadas / Editadas com Sucesso!';
+}else{
+    $mensagem = 'Erro ao Vincular / Editar Cidades!';
+}
+echo $mensagem;
