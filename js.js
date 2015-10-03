@@ -109,6 +109,7 @@ function cadastra_cidades(){
 //------------------------------------------------------------------------------
 function vincular_cidades(){
     function retorno(ret){
+        alert(ret);
         carrega_cidades_vinculadas();
         
         id('cidade_atual').value    = '';
