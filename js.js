@@ -1,3 +1,15 @@
+/**
+ * FACULDADE ANHANGUERA DE BAURU
+ * CIÊNCIAS DA COMPUTAÇÃO
+ * 
+ * INTELIGÊNCIA ARTIFICIAL
+ * ALGORITIMO ARAD/BUCHAREST
+ * 
+ * CRIADO POR:  MATHEUS MERNICK
+ * EMAIL:       mernick@live.com
+ * DATA:        03/10/2015
+ */
+
 //------------------------------------------------------------------------------
 function carrega_cidades(){
     function retorno(ret){
@@ -40,6 +52,22 @@ function edita_km(o){
 function calcular_rotas(){
     function retorno(ret){
         id('resultados').innerHTML = ret;
+        
+        var arr_total = [], total, total_min, result;
+        result = document.querySelectorAll(".total");
+        
+        for(var i = 0; i < result.length; i++){
+            total = parseInt(result[i].lastElementChild.innerText);
+            arr_total.push(total);
+        }
+        
+        total_min = Math.min.apply(Math, arr_total);
+        
+        for(var j = 0; j < result.length; j++){
+            if(parseInt(result[j].lastElementChild.innerText) == total_min){
+                result[j].style.color = "green";
+            }
+        }
     };
     
     if(!id('cidade_atual_param').value){
