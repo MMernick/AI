@@ -12,17 +12,17 @@ echo '<table class="table table-hover">'
             <tr>
               <th>ATUAL</th>
               <th>DESTINO</th>
-              <th>KM</th>
+              <th>KM (Editar ?)</th>
             </tr>
         </thead>
         <tbody>';
 for($j = 0; $j < count($cidades); $j++){
     if(array_key_exists($cidades[$j], $vinculos)){
-    for($i = 0; $i < count($vinculos[$cidades[$j]]); $i++){
-            echo '<tr>'.
+        for($i = 0; $i < count($vinculos[$cidades[$j]]); $i++){
+            echo '<tr cidade='.$vinculos[$cidades[$j]][$i]['CIDADE'].' destino='.$vinculos[$cidades[$j]][$i]['DESTINO'].'>'.
                     '<td>'.$vinculos[$cidades[$j]][$i]['CIDADE'].'</td>'.
                     '<td>'.$vinculos[$cidades[$j]][$i]['DESTINO'].'</td>'.
-                    '<td>'.$vinculos[$cidades[$j]][$i]['KM'].' KM</td>'.
+                    '<td onblur="edita_km(this)" contenteditable="true">'.$vinculos[$cidades[$j]][$i]['KM'].'</td>'.
                  '</tr>';
         }
     }

@@ -5,25 +5,20 @@ $cidade_atual    = $_GET['cidade_atual'];
 $cidade_destino  = $_GET['cidade_destino'];
 $cidade_km       = $_GET['cidade_km'];
 
-$existe         = FALSE;
 $path           = $GLOBALS['PATH'].'/registros/vincular_cidades.json';
+$path_inverso   = $GLOBALS['PATH'].'/registros/vincular_cidades_inverso.json';
 
 $arquivo = file_get_contents($path);
 $dados = json_decode($arquivo, true);
 
-if(!empty($dados[$cidade_atual])){
-    for($i = 0; $i < count($dados[$cidade_atual]); $i++){
-        if($dados[$cidade_atual][$i]['DESTINO'] == $cidade_destino){
-            $dados[$cidade_atual][$i]['KM'] = $cidade_km;
-        }else{
-            $dados[$cidade_atual][] = ['CIDADE' => $cidade_atual, 'DESTINO' => $cidade_destino, 'KM' => $cidade_km];
-        }
-    }
-}else{
-    $dados[$cidade_atual][] = ['CIDADE' => $cidade_atual, 'DESTINO' => $cidade_destino, 'KM' => $cidade_km];
-}
+$arquivo_inv = file_get_contents($path_inverso);
+$dados_inv = json_decode($arquivo_inv, true);
 
-if(file_put_contents($path,json_encode($dados))){
+
+$dados[$cidade_atual][]         = ['CIDADE' => $cidade_atual, 'DESTINO' => $cidade_destino, 'KM' => $cidade_km];
+$dados_inv[$cidade_destino][]   = ['CIDADE' => $cidade_destino, 'DESTINO' => $cidade_atual, 'KM' => $cidade_km];
+
+if(file_put_contents($path,json_encode($dados)) && file_put_contents($path_inverso,json_encode($dados_inv))){
     $mensagem = 'Cidades Vinculadas / Editadas com Sucesso!';
 }else{
     $mensagem = 'Erro ao Vincular / Editar Cidades!';

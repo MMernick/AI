@@ -26,16 +26,16 @@
                         <div class="panel-body">
                             <form class="form-inline">
                                 <div class="form-group">
-                                    <select id="cidade_atual_param" class="form-control" style="width: 200px;" disabled="">
+                                    <select id="cidade_atual_param" class="form-control" style="width: 200px;">
                                         <option value="Arad">Arad</option>
                                     </select>
                                     <br>
                                     <br>
-                                    <select id="cidade_destino_param" class="form-control" style="width: 200px;" disabled="">
+                                    <select id="cidade_destino_param" class="form-control" style="width: 200px;">
                                         <option value="Bucharest">Bucharest</option>
                                     </select>
                                 </div>
-                                <button type="button" class="btn btn-primary pull-right">Calcular</button>
+                                <button type="button" class="btn btn-primary pull-right" onclick="calcular_rotas()">Calcular</button>
                             </form>
                         </div>
                     </div>
@@ -43,9 +43,9 @@
                 <div class="col-md-8">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Busca</h3>
+                            <h3 class="panel-title">Resultados</h3>
                         </div>
-                        <div class="panel-body"></div>
+                        <div class="panel-body" id="resultados"></div>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                                     &nbsp;
                                     <select id="cidade_destino" class="form-control" style="width: 200px;"></select>
                                 </div>
-                                <button type="button" class="btn btn-primary pull-right" onclick="vincular_cidades()">Vincular / Editar</button>
+                                <button type="button" class="btn btn-primary pull-right" onclick="vincular_cidades()">Vincular</button>
                             </form>
                         </div>
                     </div>

@@ -2,6 +2,7 @@
 function carrega_cidades(){
     function retorno(ret){
         id('lista_cidades').innerHTML = ret;
+        carrega_cmb_cidades();
     };
     ajax('php/carregar_cidades.php', null, retorno);
 };
@@ -11,6 +12,9 @@ function carrega_cmb_cidades(){
     function retorno(ret){
         id('cidade_atual').innerHTML            = ret;
         id('cidade_destino').innerHTML          = ret;
+        
+        id('cidade_atual_param').innerHTML            = ret;
+        id('cidade_destino_param').innerHTML          = ret;
     };
     ajax('php/carregar_cmb_cidades.php', null, retorno);
 };
@@ -21,6 +25,34 @@ function carrega_cidades_vinculadas(){
         id('cidades_vinculadas').innerHTML = ret;
     };
     ajax('php/carregar_cidades_vinculadas.php', null, retorno);
+};
+
+//------------------------------------------------------------------------------
+function edita_km(o){
+   function retorno(ret){
+    };
+    
+    var strpar = array_args('cidade', o.parentNode.getAttribute('cidade'), 'destino', o.parentNode.getAttribute('destino'), 'km', o.innerText);
+    ajax('php/editar_vinculo.php', strpar, retorno);
+};
+
+//------------------------------------------------------------------------------
+function calcular_rotas(){
+    function retorno(ret){
+        id('resultados').innerHTML = ret;
+    };
+    
+    if(!id('cidade_atual_param').value){
+        alert('Selecione o Ponto de Partida!');
+        return;
+    }
+    if(!id('cidade_destino_param').value){
+        alert('Selecione o Destino!');
+        return;
+    }
+    
+    var strpar = array_args('cidade_atual', id('cidade_atual_param').value, 'cidade_destino', id('cidade_destino_param').value);
+    ajax('php/calcular_rotas.php', strpar, retorno);
 };
 
 //------------------------------------------------------------------------------
